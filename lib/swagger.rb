@@ -1,10 +1,7 @@
 require 'swagger/version'
 require 'addressable/uri'
 require 'addressable/template'
-require 'hashie/dash'
-require 'hashie/mash'
-require 'hashie/extensions/coercion'
-require 'hashie/extensions/indifferent_access'
+require 'hashie'
 
 module Swagger
   RESOURCES_DIR = File.expand_path '../../resources/', __FILE__
@@ -22,7 +19,9 @@ module Swagger
   end
 end
 
+require 'swagger/attachable'
 require 'swagger/definition_section'
+require 'swagger/schema'
 require 'swagger/uri'
 require 'swagger/uri_template'
 require 'swagger/loaders'

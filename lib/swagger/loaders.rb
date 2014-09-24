@@ -16,13 +16,13 @@ module Swagger
 
     class YAMLLoader
       def self.load(content)
-        APIDeclaration.build YAML.load(content)
+        APIDeclaration.build(YAML.load(content))
       end
     end
 
     class JSONLoader
       def self.load(content)
-        APIDeclaration.build JSON.parse(content)
+        APIDeclaration.build(JSON.parse(content))
       end
     end
   end

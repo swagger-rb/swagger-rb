@@ -6,6 +6,9 @@
 # versions of RuboCop, may require this file to be generated again.
 
 # Not yet...
+Style/Documentation:
+  Enabled: false
+
 Metrics/LineLength:
   Max: 120
 Metrics/MethodLength:

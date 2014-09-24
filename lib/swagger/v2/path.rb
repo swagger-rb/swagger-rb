@@ -3,6 +3,9 @@ require 'swagger/v2/api_operation'
 module Swagger
   module V2
     class Path < DefinitionSection
+      extend Forwardable
+      def_delegator :parent, :host
+
       VERBS = [:get, :put, :post, :delete, :options, :head, :patch]
 
       section :parameters, Array[Parameter]

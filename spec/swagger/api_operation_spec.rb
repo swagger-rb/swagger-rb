@@ -79,7 +79,10 @@ module Swagger
         describe '#default_response' do
           subject { swagger.paths['/pets'].get.default_response }
           it 'is selects the response labeled default' do
-            expect(subject.description).to eq('pet response (default)')
+            # Turns out a lot of examples are using "default" more like unknown error (i.e. else)
+            # rather than the default successful response.
+            # expect(subject.description).to eq('pet response (default)')
+            expect(subject.description).to eq('pet response')
           end
         end
       end

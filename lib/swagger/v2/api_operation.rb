@@ -5,8 +5,7 @@ module Swagger
   module V2
     class APIOperation < DefinitionSection
       extend Forwardable
-      alias_method :path, :parent
-      def_delegator :parent, :uri_template
+      def_delegators :parent, :uri_template, :path, :host
 
       # required_section :verb, Symbol
       section :summary, String
@@ -24,10 +23,6 @@ module Swagger
         super
       end
 
-      def host
-        path.api.host
-      end
-
       def verb
         parent.operations.key self
       end
@@ -35,7 +30,9 @@ module Swagger
       def default_response
         return nil if responses.values.nil?
 
-        responses['default'] || responses.values.first
+        # FIXME: Swagger isn't very clear on "normal response codes"
+        # In the examples, default is actually an error
+        responses['200'] || responses['201'] || responses['default'] || responses.values.first
       end
 
       # def self.coerce(orig_hash)
