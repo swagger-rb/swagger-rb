@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Swagger::VERSION
   spec.authors       = ['Max Lincoln']
   spec.email         = ['max@devopsy.com']
-  spec.summary       = 'Swagger parser for Ruby.  '
+  spec.summary       = 'Swagger parser for Ruby'
   spec.description   = <<-eos
     The Swagger gem parses and provides an simple API for
     [Swagger](http://swagger.io/) documents that define RESTful APIs.
