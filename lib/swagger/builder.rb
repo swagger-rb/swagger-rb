@@ -72,7 +72,8 @@ module Swagger
 
       klass.const_set('Bash',
                       Class.new(klass).tap do | bash_klass |
-                        bash_klass.include Bash
+                        # include is public in Ruby 2.1+, hack to support older
+                        bash_klass.send(:include, Bash)
                       end
       ) unless klass.const_defined? 'Bash'
 
