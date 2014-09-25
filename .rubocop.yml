@@ -8,6 +8,8 @@
 # Not yet...
 Style/Documentation:
   Enabled: false
+Style/Encoding:
+  EnforcedStyle: when_needed
 
 Metrics/LineLength:
   Max: 120
