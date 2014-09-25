@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'swagger/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'swagger'
+  spec.name          = 'swagger-core'
   spec.version       = Swagger::VERSION
   spec.authors       = ['Max Lincoln']
   spec.email         = ['max@devopsy.com']
