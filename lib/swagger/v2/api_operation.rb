@@ -23,6 +23,14 @@ module Swagger
         super
       end
 
+      def api_title
+        root.info.title
+      end
+
+      def full_name
+        "#{api_title} - #{summary}"
+      end
+
       def verb
         parent.operations.key self
       end
