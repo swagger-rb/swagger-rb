@@ -86,7 +86,24 @@ module Swagger
   # An object for building a Swagger document. Coerces and validates data types
   # as create the document, but does not enforce required fields until you call
   # #{Bash#build}.
-  class Builder < Swagger::V2::API
-    include Swagger::Bash
+  module Builder
+    def self.builder(opts = {})
+      version = opts[:version] || '2.0'
+      target_class = target_api_class(version)
+      klass = Swagger::Bash.infect(target_class)
+      klass.new({})
+    end
+
+    private
+
+    def self.target_api_class(version)
+      major, _minor = version.to_s.split('.')
+      case major
+      when '2'
+        Swagger::V2::API
+      else
+        fail ArgumentError, "Swagger version #{version} is not currently supported"
+      end
+    end
   end
 end

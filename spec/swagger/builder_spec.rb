@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Swagger
   describe Builder do
-    subject(:builder) { described_class.new({}) }
+    subject(:builder) { described_class.builder }
     describe 'setting fields' do
       it 'raises an error if the field does not exist' do
         expect { builder.xxx = 'foo' }.to raise_error(NoMethodError)
