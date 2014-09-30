@@ -1,0 +1,4 @@
+--no-private
+lib/swagger/definition_section.rb
+lib/swagger.rb
+lib/**/*.rb

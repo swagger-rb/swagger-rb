@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Swagger
   module V2
-    describe APIDeclaration do
+    describe API do
       let(:swagger_file) { 'spec/fixtures/petstore-full.yaml' }
       let(:swagger) { Swagger.load swagger_file }
       let(:expected_host) { 'petstore.swagger.wordnik.com' }

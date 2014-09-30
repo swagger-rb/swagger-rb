@@ -1,14 +1,18 @@
+require 'swagger/swagger_object'
 require 'swagger/v2/example'
 
 module Swagger
   module V2
-    class Response < DefinitionSection
-      section :description, String
-      section :schema, Swagger::Schema
-      section :headers, Array # [String => String] # TODO: Headers
-      section :examples, Hash[Swagger::MimeType => Example]
+    # Class representing a Swagger "Response Object".
+    # @see https://github.com/wordnik/swagger-spec/blob/master/versions/2.0.md#responseObject Response Object
+    class Response < SwaggerObject
+      field :description, String
+      field :schema, Swagger::Schema
+      field :headers, Array # [String => String] # TODO: Headers
+      field :examples, Hash[Swagger::MimeType => Example]
 
       def status_code
+        # FIXME: swagger-spec needs a defined way to define codes
         code = parent.responses.key self
         code = '200' if code == 'default'
         code.to_i

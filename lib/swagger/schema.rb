@@ -1,4 +1,7 @@
 module Swagger
+  # Represents a Swagger Schema Object, a more deterministic subset of JSON Schema.
+  # @see https://github.com/wordnik/swagger-spec/blob/master/versions/2.0.md#schema-object- Schema Object
+  # @see http://json-schema.org/ JSON Schema
   class Schema < Hashie::Mash
     include Attachable
     include Hashie::Extensions::MergeInitializer

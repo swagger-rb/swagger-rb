@@ -1,18 +1,19 @@
-require 'swagger/v2/api_operation'
+require 'swagger/swagger_object'
+require 'swagger/v2/operation'
 
 module Swagger
   module V2
-    class Path < DefinitionSection
+    # Class representing a Swagger "Path Item Object".
+    # @see https://github.com/wordnik/swagger-spec/blob/master/versions/2.0.md#pathItemObject Path Item Object
+    class Path < SwaggerObject
       extend Forwardable
       def_delegator :parent, :host
 
       VERBS = [:get, :put, :post, :delete, :options, :head, :patch]
-
-      section :parameters, Array[Parameter]
-
       VERBS.each do | verb |
-        section verb, APIOperation
+        field verb, Operation
       end
+      field :parameters, Array[Parameter]
 
       def initialize(hash)
         hash[:parameters] ||= []

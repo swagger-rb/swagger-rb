@@ -7,6 +7,8 @@
 
 # Not yet...
 Style/Documentation:
+  # See https://github.com/bbatsov/rubocop/issues/947
+  # Use inch instead
   Enabled: false
 Style/Encoding:
   EnforcedStyle: when_needed

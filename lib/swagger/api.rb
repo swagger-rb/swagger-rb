@@ -1,11 +1,12 @@
 module Swagger
-  class APIDeclaration < DefinitionSection
+  # A common interface for building or loading Swagger documents of any version. See subclasses.
+  class API < SwaggerObject
     def self.build(hash)
       version = hash['swaggerVersion'] || hash['swagger']
       major, _minor = version.to_s.split('.')
       case major
       when '2'
-        Swagger::V2::APIDeclaration.new hash
+        Swagger::V2::API.new hash
       else
         fail ArgumentError, "Swagger version #{version} is not currently supported"
       end
@@ -22,4 +23,4 @@ module Swagger
   end
 end
 
-require 'swagger/v2/api_declaration'
+require 'swagger/v2/api'

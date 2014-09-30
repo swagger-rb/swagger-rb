@@ -1,8 +1,9 @@
 module Swagger
+  # Class representing a URI. Backed by Addressable::URI.
+  # @see http://en.wikipedia.org/wiki/Uniform_resource_identifier
   class URI < String
     attr_reader :uri
     def initialize(string)
-      # FIXME: Is it possible to initialize with heuristic parse once?
       @uri = Addressable::URI.heuristic_parse string
       super
     end

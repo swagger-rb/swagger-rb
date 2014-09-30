@@ -5,6 +5,7 @@ module Swagger
   # the same rules as a Dash except for 'required' properties,
   # which are not enforced until converting to a Dash via `build`.
   module Bash
+    # @api private
     module ClassMethods
       def self.extend_object(dash)
         fail TypeError, 'Bash only works on Dash' unless dash <= Hashie::Dash
@@ -17,6 +18,7 @@ module Swagger
       end
     end
 
+    # @api private
     def self.included(dash) # rubocop:disable Metrics/MethodLength
       fail TypeError, 'Bash only works on Dash' unless dash <= Hashie::Dash
       dash.extend ClassMethods
@@ -81,7 +83,10 @@ module Swagger
     end
   end
 
-  class Builder < Swagger::V2::APIDeclaration
+  # An object for building a Swagger document. Coerces and validates data types
+  # as create the document, but does not enforce required fields until you call
+  # #{Bash#build}.
+  class Builder < Swagger::V2::API
     include Swagger::Bash
   end
 end

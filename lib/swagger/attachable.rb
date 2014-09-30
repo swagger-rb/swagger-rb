@@ -1,5 +1,13 @@
 module Swagger
+  # A module that attaches parent objects to their children so you can navigate back
+  # up the hierarchy.
   module Attachable
+    # The top-level object in the hierarchy.
+    def root
+      return self if parent.nil?
+      parent.root
+    end
+
     # @api private
     def attach_parent(parent)
       @parent = parent
@@ -21,11 +29,6 @@ module Swagger
           end
         end
       end
-    end
-
-    def root
-      return self if parent.nil?
-      parent.root
     end
   end
 end

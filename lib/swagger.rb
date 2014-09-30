@@ -3,6 +3,8 @@ require 'addressable/uri'
 require 'addressable/template'
 require 'hashie'
 
+# Provides loading and building capabilities for Swagger.
+# @see http://swagger.io Swagger
 module Swagger
   RESOURCES_DIR = File.expand_path '../../resources/', __FILE__
   class InvalidDefinition < StandardError
@@ -20,11 +22,11 @@ module Swagger
 end
 
 require 'swagger/attachable'
-require 'swagger/definition_section'
+require 'swagger/swagger_object'
 require 'swagger/schema'
 require 'swagger/uri'
 require 'swagger/uri_template'
 require 'swagger/loaders'
 require 'swagger/mime_type'
-require 'swagger/api_declaration'
+require 'swagger/api'
 require 'swagger/builder'

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Swagger
   module V2
-    describe APIOperation do
+    describe Operation do
       context 'Sample petstore API' do
         let(:swagger_file) { 'spec/fixtures/petstore-full.yaml' }
         let(:swagger) { Swagger.load swagger_file }
