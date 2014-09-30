@@ -85,6 +85,14 @@ module Swagger
             expect(subject.description).to eq('pet response')
           end
         end
+
+        describe '#signature' do
+          subject { swagger.paths['/pets'].get }
+          it 'is a signature similar to what would appear in logs or HTTP dumps' do
+            # FIXME: It's a bit weird to have host but not scheme... but Swagger allows multiple schemes
+            expect(subject.signature).to eq('GET petstore.swagger.wordnik.com/api/pets')
+          end
+        end
       end
     end
   end

@@ -36,6 +36,10 @@ module Swagger
         parent.operations.key self
       end
 
+      def signature
+        "#{verb.to_s.upcase} #{parent.uri_template}"
+      end
+
       def default_response
         return nil if responses.values.nil?
 
