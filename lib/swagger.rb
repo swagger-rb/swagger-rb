@@ -1,4 +1,5 @@
 require 'swagger/version'
+require 'swagger/boolean'
 require 'addressable/uri'
 require 'addressable/template'
 require 'hashie'

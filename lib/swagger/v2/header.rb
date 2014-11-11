@@ -7,7 +7,8 @@ module Swagger
     class Header < SwaggerObject
       # @!group Fixed Fields
       field :description, String
-      field :required, Object # FIXME: Should be a boolean
+      field :required, Swagger::Boolean
+      alias_method :required?, :required
       field :type, String
       field :format, String
       field :items, Hash # TODO: Items Object
@@ -18,15 +19,18 @@ module Swagger
       # @!group Deterministic JSON Schema
       field :default, Object
       field :maximum, Numeric
-      field :exclusiveMaximum, String # FIXME: boolean
+      field :exclusiveMaximum, Swagger::Boolean
+      alias_method :exclusiveMaximum?, :exclusiveMaximum
       field :minimum, Numeric
-      field :exclusiveMinimum,  String # FIXME: boolean
+      field :exclusiveMinimum, Swagger::Boolean
+      alias_method :exclusiveMinimum?, :exclusiveMinimum
       field :maxLength, Integer
       field :minLength, Integer
       field :pattern, String
       field :maxItems,  Integer
       field :minItems,  Integer
-      field :uniqueItems, String # FIXME: boolean
+      field :required, Swagger::Boolean
+      alias_method :required?, :required
       field :enum,  Array[Object]
       field :multipleOf,  Numeric
       # @!endgroup
