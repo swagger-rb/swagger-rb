@@ -31,8 +31,7 @@ module Swagger
       field :responses, Hash[String => Response]
       field :securityDefinitions, Hash[String => SecurityScheme]
       field :security, Array[SecurityRequirement]
-      # TODO: This is actually an array of tag names, not Tag objects, need to handle relation
-      field :tag, Array[String]
+      field :tags, Array[Object] # FIXME: This is actually an array of Tag objects
       field :externalDocs, Object # TODO: ExternalDocs class
       # @endgroup
 

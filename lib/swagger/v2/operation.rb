@@ -15,13 +15,13 @@ module Swagger
       field :description, String
       field :operationId, String
       alias_method :operation_id, :operationId
-      field :produces, Array[String]
-      field :consumes, Array[String]
-      field :tags, Array[String]
-      field :parameters, Array[Parameter]
+      field :produces, Array[String] # TODO: Need a lookup that merges w/ API-level field
+      field :consumes, Array[String] # TODO: Need a lookup that merges w/ API-level field
+      field :tags, Array[String] # TODO: This is an array of tag names, need to handle resolution name -> Tag object
+      field :parameters, Array[Parameter] # TODO: Can't decide if default: [] is useful or troublesome
       field :responses, Hash[String => Response]
-      field :schemes, Array[String]
-      field :security, Array[SecurityRequirement]
+      field :schemes, Array[String] # TODO: Need a lookup that merges w/ API-level field
+      field :security, Array[SecurityRequirement] # TODO: Need a lookup that merges w/ API-level field
       field :externalDocs, Object # TODO: ExternalDocumentation class
 
       def api_title
