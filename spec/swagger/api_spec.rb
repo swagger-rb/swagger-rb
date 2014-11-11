@@ -43,7 +43,7 @@ module Swagger
       context 'Sample petstore API' do
         describe '#swagger' do
           subject { swagger.swagger }
-          it { is_expected.to eq(2.0) }
+          it { is_expected.to eq('2.0') }
         end
 
         describe '#info' do

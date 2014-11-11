@@ -34,10 +34,9 @@ paths:
         description: foos to bar by
         required: false
         type: array
-        format: csv
+        collectionFormat: csv
         items:
           type: string
-        collectionFormat: something # what other formats exist?
     get:
       tags:
         - Things
@@ -51,6 +50,11 @@ paths:
 
         Sed tempus felis lobortis leo pulvinar rutrum. Nam mattis velit nisl, eu condimentum ligula luctus nec. Phasellus semper velit eget aliquet faucibus. In a mattis elit. Phasellus vel urna viverra, condimentum lorem id, rhoncus nibh. Ut pellentesque posuere elementum. Sed a varius odio. Morbi rhoncus ligula libero, vel eleifend nunc tristique vitae. Fusce et sem dui. Aenean nec scelerisque tortor. Fusce malesuada accumsan magna vel tempus. Quisque mollis felis eu dolor tristique, sit amet auctor felis gravida. Sed libero lorem, molestie sed nisl in, accumsan tempor nisi. Fusce sollicitudin massa ut lacinia mattis. Sed vel eleifend lorem. Pellentesque vitae felis pretium, pulvinar elit eu, euismod sapien.
       operationId: Get Pets
+      security:
+        - githubAuth:
+          - "user:read"
+          - "user:write"
+        - internalApiKey: []
       produces:
         - application/json
       parameters:
@@ -59,17 +63,15 @@ paths:
           description: tags to filter by
           required: false
           type: array
-          format: csv
+          collectionFormat: csv
           items:
             type: string
-          collectionFormat: something
         - name: limit
           in: query
           description: maximum number of results to return
           required: false
           type: integer
           format: int32
-          collectionFormat: something
       responses:
         200:
           description: pet response
@@ -79,9 +81,9 @@ paths:
               Pet:
                 $ref: '#/models/Pet'
           headers:
-            - is-dog:
+            is-dog:
               type: boolean
-            - is-cat:
+            is-cat:
               type: boolean
           examples:
             application/json:
@@ -100,9 +102,9 @@ paths:
               Pet:
                 $ref: '#/models/Pet'
           headers:
-            - is-dog:
+            is-dog:
               type: boolean
-            - is-cat:
+            is-cat:
               type: boolean
           examples:
             application/json:
@@ -129,6 +131,115 @@ definitions:
         type: string
       tag:
         type: string
-security: #
-  - No clear
-  - Definition here
+  securityDefinitions:
+    githubAccessCode:
+      type: "oauth2"
+      scopes:
+        user: |-
+          Grants read/write access to profile info only. Note that this scope
+          includes user:email and user:follow.
+        user:email: |-
+          Grants read access to a user’s email addresses.
+        user:follow: |-
+          Grants access to follow or unfollow other users.
+        public_repo: |-
+          Grants read/write access to code, commit statuses, and deployment
+          statuses for public repositories and organizations.
+        repo: |-
+          Grants read/write access to code, commit statuses, and deployment
+          statuses for public and private repositories and organizations.
+        repo_deployment: |-
+          Grants access to deployment statuses for public and private
+          repositories. This scope is only necessary to grant other users or services access to deployment statuses, without granting access to the code.
+        repo:status: |-
+          Grants read/write access to public and private repository commit
+          statuses. This scope is only necessary to grant other users or services
+          access to private repository commit statuses without granting access to the code.
+        delete_repo: |-
+          Grants access to delete adminable repositories.
+        notifications: |-
+          Grants read access to a user’s notifications. repo also provides
+          this access.
+        gist: |-
+          Grants write access to gists.
+        read:repo_hook: |-
+          Grants read and ping access to hooks in public or private repositories.
+        write:repo_hook: |-
+          Grants read, write, and ping access to hooks in public or private repositories.
+        admin:repo_hook: |-
+          Grants read, write, ping, and delete access to hooks in public or private
+          repositories.
+        read:org: |-
+          Read-only access to organization, teams, and membership.
+        write:org: |-
+          Publicize and unpublicize organization membership.
+        admin:org: |-
+          Fully manage organization, teams, and memberships.
+        read:public_key: |-
+          List and view details for public keys.
+        write:public_key: |-
+          Create, list, and view details for public keys.
+        admin:public_key: |-
+          Fully manage public keys.
+      flow: "accessCode"
+      authorizationUrl: "https://github.com/login/oauth/authorize"
+      tokenUrl: "https://github.com/login/oauth/access_token"
+    petstoreImplicit:
+      type: "oauth2"
+      scopes:
+        user: |-
+          Grants read/write access to profile info only. Note that this scope
+          includes user:email and user:follow.
+        user:email: |-
+          Grants read access to a user’s email addresses.
+        user:follow: |-
+          Grants access to follow or unfollow other users.
+        public_repo: |-
+          Grants read/write access to code, commit statuses, and deployment statuses
+          for public repositories and organizations.
+        repo: |-
+          Grants read/write access to code, commit statuses, and deployment statuses
+          for public and private repositories and organizations.
+        repo_deployment: |-
+          Grants access to deployment statuses for public and private repositories. This
+          scope is only necessary to grant other users or services access to deployment statuses, without granting access to the code.
+        repo:status: |-
+          Grants read/write access to public and private repository commit statuses. This
+          scope is only necessary to grant other users or services access to private repository
+          commit statuses without granting access to the code.
+        delete_repo: |-
+          Grants access to delete adminable repositories.
+        notifications: |-
+          Grants read access to a user’s notifications. repo also provides this access.
+        gist: |-
+          Grants write access to gists.
+        read:repo_hook: |-
+          Grants read and ping access to hooks in public or private repositories.
+        write:repo_hook: |-
+          Grants read, write, and ping access to hooks in public or private repositories.
+        admin:repo_hook: |-
+          Grants read, write, ping, and delete access to hooks in public or private
+          repositories.
+        read:org: |-
+          Read-only access to organization, teams, and membership.
+        write:org: |-
+          Publicize and unpublicize organization membership.
+        admin:org: |-
+          Fully manage organization, teams, and memberships.
+        read:public_key: |-
+          List and view details for public keys.
+        write:public_key: |-
+          Create, list, and view details for public keys.
+        admin:public_key: |-
+          Fully manage public keys.
+      flow: "implicit"
+      authorizationUrl: "http://petstore.swagger.wordnik.com/oauth/dialog"
+    internalApiKey:
+      type: "apiKey"
+      in: "header"
+      name: "api_key"
+  security:
+    - githubAccessCode:
+        - "user"
+        - "gist"
+    - internalApiKey: []

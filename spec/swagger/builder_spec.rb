@@ -9,11 +9,11 @@ module Swagger
       end
 
       it 'raises if the value cannot be coerced to match the field' do
-        expect { builder.swagger = :foo }.to raise_error(Hashie::CoercionError)
+        expect { builder.info = 'foo' }.to raise_error(Hashie::CoercionError)
       end
 
       it 'sets the field' do
-        expect { builder.swagger = 2.0 }.to change { builder.swagger }.from(nil).to(2.0)
+        expect { builder.swagger = 2.0 }.to change { builder.swagger }.from(nil).to('2.0')
       end
 
       it 'allows complex types to be set via a block' do

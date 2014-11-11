@@ -1,6 +1,7 @@
 require 'swagger/swagger_object'
 require 'swagger/v2/parameter'
 require 'swagger/v2/response'
+require 'swagger/v2/security_requirement'
 
 module Swagger
   module V2
@@ -21,6 +22,7 @@ module Swagger
       field :parameters, Array[Parameter]
       field :responses, Hash[String => Response]
       field :schemes, Array[String]
+      field :security, Array[SecurityRequirement]
 
       # TODO: Add externalDocs
 

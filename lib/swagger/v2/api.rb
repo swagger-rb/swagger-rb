@@ -2,6 +2,8 @@ require 'swagger/swagger_object'
 require 'swagger/v2/info'
 require 'swagger/v2/path'
 require 'swagger/v2/tag'
+require 'swagger/v2/security_scheme'
+require 'swagger/v2/security_requirement'
 require 'json-schema'
 
 module Swagger
@@ -15,8 +17,7 @@ module Swagger
     # @see https://github.com/wordnik/swagger-spec/blob/master/versions/2.0.md#swagger-object- Swagger Object
     class API < Swagger::API
       # @group Swagger Fields
-      # HACK: Swagger-Spec: This is correct for now, but schema will likely be changed to String
-      required_field :swagger, Float
+      required_field :swagger, String
       required_field :info, Info
       field :host, Swagger::URITemplate
       field :basePath, Swagger::URITemplate
@@ -27,8 +28,8 @@ module Swagger
       field :definitions, Hash[String => Schema]
       field :parameters, Hash[String => Parameter]
       field :responses, Hash[String => Response]
-      # HACK: Swagger-Spec: Not documented/defined yet. Implement once spec is complete.
-      field :security, Object
+      field :securityDefinitions, Hash[String => SecurityScheme]
+      field :security, Array[SecurityRequirement]
       # TODO: This is actually an array of tag names, not Tag objects, need to handle relation
       field :tag, Array[String]
       # TODO: externalDocs - Documentable Module

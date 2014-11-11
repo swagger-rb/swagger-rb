@@ -1,5 +1,6 @@
 require 'swagger/swagger_object'
 require 'swagger/v2/example'
+require 'swagger/v2/header'
 
 module Swagger
   module V2
@@ -8,7 +9,7 @@ module Swagger
     class Response < SwaggerObject
       field :description, String
       field :schema, Swagger::Schema
-      field :headers, Array # [String => String] # TODO: Headers
+      field :headers, Hash[String => Header] # TODO: Headers
       field :examples, Hash[Swagger::MimeType => Example]
 
       def status_code
