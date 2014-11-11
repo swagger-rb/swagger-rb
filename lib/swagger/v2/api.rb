@@ -1,4 +1,5 @@
 require 'swagger/swagger_object'
+require 'swagger/v2/deterministic_json_schema'
 require 'swagger/v2/info'
 require 'swagger/v2/path'
 require 'swagger/v2/tag'
@@ -32,7 +33,7 @@ module Swagger
       field :security, Array[SecurityRequirement]
       # TODO: This is actually an array of tag names, not Tag objects, need to handle relation
       field :tag, Array[String]
-      # TODO: externalDocs - Documentable Module
+      field :externalDocs, Object # TODO: ExternalDocs class
       # @endgroup
 
       alias_method :base_path, :basePath

@@ -11,7 +11,6 @@ module Swagger
       extend Forwardable
       def_delegators :parent, :uri_template, :path, :host
 
-      # required_field :verb, Symbol
       field :summary, String
       field :description, String
       field :operationId, String
@@ -23,8 +22,7 @@ module Swagger
       field :responses, Hash[String => Response]
       field :schemes, Array[String]
       field :security, Array[SecurityRequirement]
-
-      # TODO: Add externalDocs
+      field :externalDocs, Object # TODO: ExternalDocumentation class
 
       def api_title
         root.info.title
@@ -34,6 +32,7 @@ module Swagger
         "#{api_title} - #{summary}"
       end
 
+      # The HTTP verb for the operation.
       def verb
         parent.operations.key self
       end
