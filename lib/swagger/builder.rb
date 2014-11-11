@@ -19,7 +19,7 @@ module Swagger
     end
 
     # @api private
-    def self.included(dash) # rubocop:disable Metrics/MethodLength
+    def self.included(dash) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
       fail TypeError, 'Bash only works on Dash' unless dash <= Hashie::Dash
       dash.extend ClassMethods
       dash.instance_variable_get('@required_properties').clear
