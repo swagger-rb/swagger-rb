@@ -34,6 +34,14 @@ module Swagger
       def path
         parent.paths.key self
       end
+
+      # Iterates over each Path level parameter.
+      def each_parameter
+        return if parameters.nil?
+        parameters.each do | parameter |
+          yield parameter
+        end
+      end
     end
   end
 end

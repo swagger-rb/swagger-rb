@@ -48,6 +48,18 @@ module Swagger
         # In the examples, default is actually an error
         responses['200'] || responses['201'] || responses['default'] || responses.values.first
       end
+
+      # Iterates over each parameter defined directly on the operation, excluding parameters
+      # defined at the API level.
+      def each_parameter
+        return if parameters.nil?
+        parameters.each do | parameter |
+          yield parameter
+        end
+      end
+
+      # Iterates over all parameters defined on this operation or at the API level
+      # TODO: Implement all_parameters
     end
   end
 end
