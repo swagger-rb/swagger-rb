@@ -42,7 +42,7 @@ module Swagger
       end
 
       def default_response
-        return nil if responses.values.nil?
+        return nil if responses.nil? || responses.values.nil?
 
         # FIXME: Swagger isn't very clear on "normal response codes"
         # In the examples, default is actually an error

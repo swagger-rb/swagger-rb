@@ -21,7 +21,7 @@ module Swagger
   def self.build(content, opts = {})
     parser ||= Swagger::Parsers.parser_for(opts[:format])
     content = parser.parse(content) unless parser.nil?
-    Swagger::API.build(content)
+    Swagger::API.build_api(content)
   end
 
   # Load a Swagger document from a file.

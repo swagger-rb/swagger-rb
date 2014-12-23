@@ -1,7 +1,7 @@
 module Swagger
   # A common interface for building or loading Swagger documents of any version. See subclasses.
   class API < SwaggerObject
-    def self.build(hash)
+    def self.build_api(hash)
       version = hash['swaggerVersion'] || hash['swagger']
       major, _minor = version.to_s.split('.')
       case major
