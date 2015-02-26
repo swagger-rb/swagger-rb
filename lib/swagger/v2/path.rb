@@ -15,11 +15,6 @@ module Swagger
       end
       field :parameters, Array[Parameter]
 
-      def initialize(hash)
-        hash[:parameters] ||= []
-        super
-      end
-
       def operations
         VERBS.each_with_object({}) do | v, h |
           operation = send v
