@@ -1,8 +1,9 @@
-require 'swagger/version'
-require 'swagger/boolean'
 require 'addressable/uri'
 require 'addressable/template'
+require 'forwardable'
 require 'hashie'
+require 'swagger/version'
+require 'swagger/boolean'
 
 # Provides loading and building capabilities for Swagger.
 # @see http://swagger.io Swagger
