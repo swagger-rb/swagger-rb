@@ -41,7 +41,7 @@ module Swagger
       # @return [Array<Operation>]
       def operations
         # Perhaps not the best way...
-        paths.values.map do | path |
+        paths.values.map do |path|
           path.operations.values
         end.flatten
       end

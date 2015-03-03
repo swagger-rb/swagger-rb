@@ -26,13 +26,13 @@ module Swagger
 
       # Very hacky... copy instance_variables for coercions
       base_dash = dash.superclass
-      [:@properties, :@defaults].each do | property |
+      [:@properties, :@defaults].each do |property|
         dash.instance_variable_set(property, base_dash.instance_variable_get(property))
       end
 
-      [:@key_coercions, :@value_coercions].each do | property |
+      [:@key_coercions, :@value_coercions].each do |property|
         coercions = base_dash.instance_variable_get(property)
-        coercions.each_pair do | key, into |
+        coercions.each_pair do |key, into|
           infect_class coercions, key, into
         end if coercions
         dash.instance_variable_set(property, coercions)
@@ -57,11 +57,11 @@ module Swagger
 
     def self.infect_class(coercions, key, into)
       if into.is_a? Hash
-        into.each_pair do | sub_key, sub_into |
+        into.each_pair do |sub_key, sub_into|
           coercions[key][sub_key] = infect sub_into
         end
       elsif into.is_a? Array
-        coercions[key] = into.map do | sub_into |
+        coercions[key] = into.map do |sub_into|
           infect sub_into
         end
       else
@@ -73,7 +73,7 @@ module Swagger
       return klass unless klass <= Hashie::Dash
 
       klass.const_set('Bash',
-                      Class.new(klass).tap do | bash_klass |
+                      Class.new(klass).tap do |bash_klass|
                         # include is public in Ruby 2.1+, hack to support older
                         bash_klass.send(:include, Bash)
                       end

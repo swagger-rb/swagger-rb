@@ -39,7 +39,7 @@ module Swagger
 
     def resolve_refs
       items_and_props = [deep_select('items'), deep_select('properties')].flatten.compact
-      items_and_props.each do | item |
+      items_and_props.each do |item|
         key = item.delete('$ref')
         next if remote_ref? key
         model = root.definitions[key]

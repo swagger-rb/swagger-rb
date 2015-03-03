@@ -10,7 +10,7 @@ module Swagger
       def_delegator :parent, :host
 
       VERBS = [:get, :put, :post, :delete, :options, :head, :patch]
-      VERBS.each do | verb |
+      VERBS.each do |verb|
         field verb, Operation
       end
       field :parameters, Array[Parameter]
@@ -21,7 +21,7 @@ module Swagger
       end
 
       def operations
-        VERBS.each_with_object({}) do | v, h |
+        VERBS.each_with_object({}) do |v, h|
           operation = send v
           h[v] = operation if operation
         end
@@ -38,7 +38,7 @@ module Swagger
       # Iterates over each Path level parameter.
       def each_parameter
         return if parameters.nil?
-        parameters.each do | parameter |
+        parameters.each do |parameter|
           yield parameter
         end
       end

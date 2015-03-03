@@ -10,8 +10,6 @@ module Swagger
         YAMLParser
       when '.json', '.js', :json
         JSONParser
-      else
-        nil
       end
     end
 
