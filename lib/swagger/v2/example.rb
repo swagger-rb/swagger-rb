@@ -23,10 +23,6 @@ module Swagger
         parser = Swagger::MimeType.parser_for(media_type)
         parser.parse(@raw)
       end
-
-      def inspect
-        @raw.inspect
-      end
     end
   end
 end
