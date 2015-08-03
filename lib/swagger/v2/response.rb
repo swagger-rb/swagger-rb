@@ -21,6 +21,21 @@ module Swagger
         # TODO: Warning?
         200
       end
+
+      # stolen/adapted from https://github.com/jasonh-n-austin/swagger-rb/blob/master/lib/swagger/v2/parameter.rb
+      def parse
+        # resolve $ref parameters
+        schema = clone
+        if schema.key?('$ref')
+          #  TODO: Make this smarter than just split, assuming local ref
+          key = schema.delete('$ref').split('/').last
+          model = root.responses[key]
+          schema.merge!(model)
+        end
+
+        schema.to_hash
+      end
+
     end
   end
 end
