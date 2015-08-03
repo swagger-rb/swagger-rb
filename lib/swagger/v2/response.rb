@@ -12,6 +12,8 @@ module Swagger
       field :headers, Hash[String => Header] # TODO: Headers
       field :examples, Hash[Swagger::MimeType => Example]
 
+      field :$ref, String
+
       def status_code
         # FIXME: swagger-spec needs a defined way to define codes
         code = parent.responses.key self
