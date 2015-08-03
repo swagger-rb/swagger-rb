@@ -20,7 +20,8 @@ module Swagger
     def initialize(mime_type_name)
       @mime_type_name = mime_type_name.to_s
       @mime_type = MIME::Types[@mime_type_name].first || base_type(@mime_type_name)
-      fail ArgumentError, "Unknown mime type or suffix: #{mime_type_name}" if @mime_type.nil?
+      #fail ArgumentError, "Unknown mime type or suffix: #{mime_type_name}" if @mime_type.nil?
+      @mime_type ||= MIME::Types["text/plain"].first
       super @mime_type_name
     end
 
