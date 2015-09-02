@@ -23,6 +23,7 @@ module Swagger
       field :schemes, Array[String] # TODO: Need a lookup that merges w/ API-level field
       field :security, Array[SecurityRequirement] # TODO: Need a lookup that merges w/ API-level field
       field :externalDocs, Object # TODO: ExternalDocumentation class
+      field :deprecated, Swagger::Boolean
 
       def api_title
         root.info.title
