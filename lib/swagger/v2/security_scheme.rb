@@ -12,13 +12,13 @@ module Swagger
 
       # @!group Fixed Fields
       required_field :type, String
-      field :description, String
+      required_field :description, String
       field :name, String
       field :in, String
-      required_field :flow, String
-      required_field :authorizationUrl, String
+      field :flow, String
+      field :authorizationUrl, String
       field :tokenUrl, String
-      required_field :scopes, Hash
+      field :scopes, Hash
       # @!endgroup
     end
   end
