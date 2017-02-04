@@ -1,6 +1,6 @@
 # Swagger
 
-Swagger is a Ruby library for parsing, building, and traversing (Swagger)[http://swagger.io/] API definitions.
+Swagger is a Ruby library for parsing, building, and traversing [Swagger](http://swagger.io/) API definitions.
 
 ## Installation
 
