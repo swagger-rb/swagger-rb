@@ -6,7 +6,8 @@ module Swagger
     # @see https://github.com/wordnik/swagger-spec/blob/master/versions/2.0.md#parameterObject Parameter Object
     class Parameter < SwaggerObject
       # @!group Fixed Fields
-      required_field :name, String
+      # required_field :name, String
+      field :name, String
       # required_field :in, String
       field :in, String
       field :description, String
@@ -25,6 +26,19 @@ module Swagger
       field :collectionFormat, String
       field :default, Object
       # @!endgroup
+
+      def parse
+        # resolve $ref parameters
+        schema = clone
+        if schema.key?('$ref')
+          #  TODO: Make this smarter than just split, assuming local ref
+          key = schema.delete('$ref').split('/').last
+          model = root.parameters[key]
+          schema.merge!(model)
+        end
+
+        schema.to_hash
+      end
 
       include DeterministicJSONSchema
     end
