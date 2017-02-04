@@ -1,0 +1,2 @@
+gem "mime-types", "~> 3.0"
+gemspec
