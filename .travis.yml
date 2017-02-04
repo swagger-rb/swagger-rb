@@ -6,7 +6,6 @@ rvm:
   - 2.3
   - 2.4
 gemfile:
-  - gemfile/mime-types-1.gemfile
-  - gemfile/mime-types-2.gemfile
-  - gemfile/mime-types-3.gemfile
-
+  - gemfile/mime_types_1.gemfile
+  - gemfile/mime_types_2.gemfile
+  - gemfile/mime_types_3.gemfile
