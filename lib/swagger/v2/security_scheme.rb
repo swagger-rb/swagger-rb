@@ -19,16 +19,16 @@ module Swagger
       field :description, String
 
       # Fields required for type apiKey
-      field :name, String, required: :api_key?
-      field :in, String, required: :api_key?
+      field :name, String # , required: :api_key?
+      field :in, String # , required: :api_key?
 
       # Fields required for type oauth2
-      field :flow, String, required: :oauth2?
-      field :scopes, Hash, required: :oauth2?
+      field :flow, String # , required: :oauth2?
+      field :scopes, Hash # , required: :oauth2?
 
       # Fields required for oauth 2 for certain flow types
-      field :authorizationUrl, String, required: :requires_authorization_url?
-      field :tokenUrl, String, required: :requires_token_url?
+      field :authorizationUrl, String # , required: :requires_authorization_url?
+      field :tokenUrl, String # , required: :requires_token_url?
       # @!endgroup
 
       private
