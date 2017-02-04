@@ -8,7 +8,7 @@ module Swagger
     # @api private
     module ClassMethods
       def self.extend_object(dash)
-        fail TypeError, 'Bash only works on Dash' unless dash <= Hashie::Dash
+        raise TypeError, 'Bash only works on Dash' unless dash <= Hashie::Dash
         dash.instance_variable_get('@required_properties').clear
         dash.coerce_value Hashie::Dash, Swagger::Bash, strict: false
       end
@@ -20,7 +20,7 @@ module Swagger
 
     # @api private
     def self.included(dash) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
-      fail TypeError, 'Bash only works on Dash' unless dash <= Hashie::Dash
+      raise TypeError, 'Bash only works on Dash' unless dash <= Hashie::Dash
       dash.extend ClassMethods
       dash.instance_variable_get('@required_properties').clear
 
@@ -32,9 +32,11 @@ module Swagger
 
       [:@key_coercions, :@value_coercions].each do |property|
         coercions = base_dash.instance_variable_get(property)
-        coercions.each_pair do |key, into|
-          infect_class coercions, key, into
-        end if coercions
+        if coercions
+          coercions.each_pair do |key, into|
+            infect_class coercions, key, into
+          end
+        end
         dash.instance_variable_set(property, coercions)
       end
 
@@ -72,12 +74,13 @@ module Swagger
     def self.infect(klass)
       return klass unless klass <= Hashie::Dash
 
-      klass.const_set('Bash',
-                      Class.new(klass).tap do |bash_klass|
-                        # include is public in Ruby 2.1+, hack to support older
-                        bash_klass.send(:include, Bash)
-                      end
-      ) unless klass.const_defined? 'Bash'
+      unless klass.const_defined? 'Bash'
+        klass.const_set('Bash',
+                        Class.new(klass).tap do |bash_klass|
+                          # include is public in Ruby 2.1+, hack to support older
+                          bash_klass.send(:include, Bash)
+                        end)
+      end
 
       klass.const_get('Bash')
     end
@@ -102,7 +105,7 @@ module Swagger
       when '2'
         Swagger::V2::API
       else
-        fail ArgumentError, "Swagger version #{version} is not currently supported"
+        raise ArgumentError, "Swagger version #{version} is not currently supported"
       end
     end
   end

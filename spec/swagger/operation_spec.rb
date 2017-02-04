@@ -30,8 +30,6 @@ module Swagger
           subject { swagger.paths['/pets'].get.summary }
           it { is_expected.to eq('Gets pets') }
         end
-
-        # rubocop:disable Metrics/LineLength
         describe '#description' do
           subject { swagger.paths['/pets'].get.description }
           it do

@@ -11,7 +11,7 @@ module Swagger
       field :in, String
       field :description, String
       field :required, Swagger::Boolean
-      alias_method :required?, :required
+      alias required? required
       # @!endgroup
 
       # @!group Body Fields

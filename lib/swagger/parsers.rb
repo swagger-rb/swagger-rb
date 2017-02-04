@@ -19,7 +19,7 @@ module Swagger
       # @param content [String] The YAML content to parse
       # @return [Hash] the parsed content
       def self.parse(content)
-        YAML.load(content)
+        YAML.safe_load(content)
       end
     end
 

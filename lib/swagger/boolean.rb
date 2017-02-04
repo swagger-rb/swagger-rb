@@ -7,7 +7,7 @@ module Swagger
       val = obj.to_s.downcase
       return true if val.match(TRUE_REGEXP)
       return false if val.match(FALSE_REGEXP)
-      fail ArgumentError, "#{obj} cannot be coerced to a boolean"
+      raise ArgumentError, "#{obj} cannot be coerced to a boolean"
     end
   end
 end

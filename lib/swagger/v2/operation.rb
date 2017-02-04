@@ -14,7 +14,7 @@ module Swagger
       field :summary, String
       field :description, String
       field :operationId, String
-      alias_method :operation_id, :operationId
+      alias operation_id operationId
       field :produces, Array[String] # TODO: Need a lookup that merges w/ API-level field
       field :consumes, Array[String] # TODO: Need a lookup that merges w/ API-level field
       field :tags, Array[String] # TODO: This is an array of tag names, need to handle resolution name -> Tag object
