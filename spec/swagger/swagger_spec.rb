@@ -32,7 +32,13 @@ describe Swagger do
 
     context 'already parsed' do
       let(:swagger_file) { 'swagger_spec/examples/v2.0/yaml/petstore.yaml' }
-      let(:content) { YAML.safe_load(File.read(swagger_file)) }
+      let(:content) {
+        if YAML.respond_to? :safe_load
+          YAML.safe_load(File.read(swagger_file))
+        else
+          YAML.load(File.read(swagger_file))
+        end
+      }
       subject(:swagger) { Swagger.build(content) }
       include_examples 'swagger loading'
     end
