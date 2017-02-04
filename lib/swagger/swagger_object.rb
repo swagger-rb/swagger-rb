@@ -13,6 +13,11 @@ module Swagger
     # and attaches to children objects so navigation via +parent+
     # and +root+ is possible.
     def initialize(hash)
+      @vendor_extensions = {}
+      hash.keys.each do |k|
+        @vendor_extensions[k] = hash.delete k if k.to_s.start_with? 'x-'
+      end
+
       super
       attach_to_children
     end

@@ -13,10 +13,6 @@ module Swagger
     end
 
     def initialize(hash)
-      @vendor_extensions = {}
-      hash.each do |k, v|
-        @vendor_extensions[k] = v if k.to_s.start_with? 'x-'
-      end
       # HACK: There's got to be a better way, but Dash wasn't working well with strings
       super(Hashie::Mash.new(hash).to_hash(symbolize_keys: true))
     end
