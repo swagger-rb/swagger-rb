@@ -1,4 +1,5 @@
 require 'mime/types'
+require 'forwardable'
 
 module Swagger
   # Class representing Media Types (commonly known as MIME Types).
