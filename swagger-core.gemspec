@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(/^(test|spec|features)\//)
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'addressable', '~> 2.3'
+  spec.add_dependency 'addressable', ['>= 2.3.0', '< 2.5.0']
   spec.add_dependency 'hashie', '~> 3.0', '< 3.4.0'
   spec.add_dependency 'json-schema', '~> 2.2'
   spec.add_dependency 'mime-types'
