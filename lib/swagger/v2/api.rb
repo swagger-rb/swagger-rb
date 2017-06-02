@@ -35,7 +35,7 @@ module Swagger
       field :externalDocs, Object # TODO: ExternalDocs class
       # @endgroup
 
-      alias_method :base_path, :basePath
+      alias base_path basePath
 
       # All operations under all paths
       # @return [Array<Operation>]
@@ -59,7 +59,7 @@ module Swagger
       def fully_validate
         # NOTE: fully_validate is ideal, but very slow with the current schema/validator
         errors = JSON::Validator.fully_validate(swagger_schema, to_json)
-        fail Swagger::InvalidDefinition, errors unless errors.empty?
+        raise Swagger::InvalidDefinition, errors unless errors.empty?
         true
       end
 

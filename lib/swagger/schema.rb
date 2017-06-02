@@ -23,7 +23,7 @@ module Swagger
 
       count = 0
       until schema.refs_resolved?
-        fail 'Could not resolve non-remote $refs 5 cycles - circular references?' if count >= 5
+        raise 'Could not resolve non-remote $refs 5 cycles - circular references?' if count >= 5
         schema.resolve_refs
         count += 1
       end

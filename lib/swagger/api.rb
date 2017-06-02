@@ -8,7 +8,7 @@ module Swagger
       when '2'
         Swagger::V2::API.new hash
       else
-        fail ArgumentError, "Swagger version #{version} is not currently supported"
+        raise ArgumentError, "Swagger version #{version} is not currently supported"
       end
     end
 

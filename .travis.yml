@@ -1,6 +1,21 @@
 language: ruby
+before_install: gem install bundler
+install: bundle install --jobs=3 --retry=3
 rvm:
-  - 2.1.0
-  - 2.0.0
-  - 1.9.3
-  - jruby
+- 2.0
+- 2.1
+- 2.2
+- 2.3
+- 2.4.0
+gemfile:
+- gemfile/mime_types_1.gemfile
+- gemfile/mime_types_2.gemfile
+- gemfile/mime_types_3.gemfile
+deploy:
+  provider: rubygems
+  api_key:
+    secure: BMsVwSCrMbeCVICWMe5dobyr5nMOcugTwlDOjZCuWprIH/nk1G9zlRDO+j86/FGsc9yDolv4QM8HmS4KwA+/kiWfRRJtXsD9VEUkSwaSji8rFKpBaZjm9cZ13LNX5/LOzWW/n3nXGfbkNlpmIbX9XQt3BG7fVL5EVj03k7EQe4w=
+  gem: swagger-core
+  on:
+    tags: true
+    repo: swagger-rb/swagger-rb

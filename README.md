@@ -1,6 +1,13 @@
 # Swagger
 
-Swagger is a Ruby library for parsing, building, and traversing (Swagger)[http://swagger.io/] API definitions.
+Swagger is a Ruby library for parsing, building, and traversing [Swagger](http://swagger.io/) API definitions.
+
+## WARNING
+
+```diff
+- WARNING: Swagger is currently locked to an old verison of Hashie.
+- If you use this gem you may run into version compatiblity issues. Help is needed to resolve the issue (#19).
+```
 
 ## Installation
 

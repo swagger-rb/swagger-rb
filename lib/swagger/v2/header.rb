@@ -8,7 +8,7 @@ module Swagger
       # @!group Fixed Fields
       field :description, String
       field :required, Swagger::Boolean
-      alias_method :required?, :required
+      alias required? required
       field :type, String
       field :format, String
       field :items, Hash # TODO: Items Object

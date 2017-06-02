@@ -15,13 +15,12 @@ module Swagger
       json:   'application/json',
       xml:    'application/xml',
       binary: 'application/octet-stream'
-    }
+    }.freeze
 
     def initialize(mime_type_name)
       @mime_type_name = mime_type_name.to_s
       @mime_type = MIME::Types[@mime_type_name].first || base_type(@mime_type_name)
-      #fail ArgumentError, "Unknown mime type or suffix: #{mime_type_name}" if @mime_type.nil?
-      @mime_type ||= MIME::Types["text/plain"].first
+      raise ArgumentError, "Unknown mime type or suffix: #{mime_type_name}" if @mime_type.nil?
       super @mime_type_name
     end
 
@@ -31,7 +30,7 @@ module Swagger
       when 'application/json'
         return JSON
       else
-        fail NotImplementedError, "Parser support for #{mime_type} is not implemented"
+        raise NotImplementedError, "Parser support for #{mime_type} is not implemented"
       end
     end
 

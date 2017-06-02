@@ -9,16 +9,11 @@ module Swagger
       extend Forwardable
       def_delegator :parent, :host
 
-      VERBS = [:get, :put, :post, :delete, :options, :head, :patch]
+      VERBS = [:get, :put, :post, :delete, :options, :head, :patch].freeze
       VERBS.each do |verb|
         field verb, Operation
       end
       field :parameters, Array[Parameter]
-
-      def initialize(hash)
-        hash[:parameters] ||= []
-        super
-      end
 
       def operations
         VERBS.each_with_object({}) do |v, h|
