@@ -9,6 +9,7 @@ module Swagger
       # required_field :name, String
       field :name, String
       # required_field :in, String
+      field :name, String
       field :in, String
       field :description, String
       field :required, Swagger::Boolean
@@ -25,6 +26,8 @@ module Swagger
       field :items, Hash # TODO: Items Object
       field :collectionFormat, String
       field :default, Object
+      field :allowEmptyValue, Swagger::Boolean
+      alias_method :allowEmptyValue?, :allowEmptyValue
       # @!endgroup
 
       def parse

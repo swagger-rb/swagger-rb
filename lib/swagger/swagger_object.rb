@@ -6,6 +6,13 @@ module Swagger
     include Hashie::Extensions::IndifferentAccess
     include Swagger::Attachable
 
+    CUSTOM_PROPERTY_PREFIX = /^x\-/
+
+    # Swagger allows any properties starting with `x-`
+    def self.property?(name)
+      super(name) || name.to_s =~ CUSTOM_PROPERTY_PREFIX
+    end
+
     attr_accessor :parent
 
     # @api private

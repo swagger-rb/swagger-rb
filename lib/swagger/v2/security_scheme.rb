@@ -15,7 +15,7 @@ module Swagger
       # According to docs, all except description are required. Schema and samples don't match.
 
       # @!group Fixed Fields
-      required_field :type, String
+      field :type, String
       field :description, String
 
       # Fields required for type apiKey
