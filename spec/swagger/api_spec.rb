@@ -66,17 +66,17 @@ module Swagger
 
         describe '#schemes' do
           subject { swagger.schemes }
-          it { is_expected.to eq(%w(http https ws wss)) }
+          it { is_expected.to eq(%w[http https ws wss]) }
         end
 
         describe '#consumes' do
           subject { swagger.consumes }
-          it { is_expected.to eq(%w(application/json application/xml)) }
+          it { is_expected.to eq(%w[application/json application/xml]) }
         end
 
         describe '#produces' do
           subject { swagger.produces }
-          it { is_expected.to eq(%w(application/vnd.max+json application/xml)) }
+          it { is_expected.to eq(%w[application/vnd.max+json application/xml]) }
         end
 
         skip '#paths'

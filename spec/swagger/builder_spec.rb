@@ -43,7 +43,7 @@ module Swagger
         }
         builder.paths['/foo'].get do |get|
           get.description = 'Testing...'
-          get.tags = %w(foo bar)
+          get.tags = %w[foo bar]
         end
         expect(builder.build).to be_an_instance_of(Swagger::V2::API)
       end

@@ -8,8 +8,8 @@ module Swagger
     class SecurityScheme < SwaggerObject
       OAUTH2_TYPE = 'oauth'.freeze
       API_KEY_TYPE = 'apikey'.freeze
-      FLOW_TYPES_REQUIRING_AUTHORIZATION_URL = %w(implicit accesscode).freeze
-      FLOW_TYPES_REQUIRING_TOKEN_URL = %w(password application accesscode).freeze
+      FLOW_TYPES_REQUIRING_AUTHORIZATION_URL = %w[implicit accesscode].freeze
+      FLOW_TYPES_REQUIRING_TOKEN_URL = %w[password application accesscode].freeze
       # FIXME: Swagger documentation about what's required doesn't seem accurate - OSAuth2 centric?
 
       # According to docs, all except description are required. Schema and samples don't match.

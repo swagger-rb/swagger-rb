@@ -23,7 +23,7 @@ module Swagger
 
         describe '#tags' do
           subject { swagger.paths['/pets'].get.tags }
-          it { is_expected.to eq(%w(Things That Do Stuff)) }
+          it { is_expected.to eq(%w[Things That Do Stuff]) }
         end
 
         describe '#summary' do
@@ -42,7 +42,6 @@ module Swagger
             is_expected.to eq(expected)
           end
         end
-        # rubocop:enable Metrics/LineLength
 
         describe '#operationId' do
           subject { swagger.paths['/pets'].get.operationId }
@@ -53,7 +52,7 @@ module Swagger
 
         describe '#produces' do
           subject { swagger.paths['/pets'].get.produces }
-          it { is_expected.to eq(%w(application/json)) }
+          it { is_expected.to eq(%w[application/json]) }
         end
 
         skip '#consumes' # swagger spec update needed
@@ -71,7 +70,7 @@ module Swagger
 
         describe '#schemes' do
           subject { swagger.paths['/pets'].get.schemes }
-          it { is_expected.to eq(%w(http https)) }
+          it { is_expected.to eq(%w[http https]) }
         end
 
         describe '#default_response' do
