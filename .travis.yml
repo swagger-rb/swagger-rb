@@ -1,16 +1,23 @@
 language: ruby
+
 before_install: gem install bundler
-install: bundle install --jobs=3 --retry=3
+
 rvm:
-- 2.0
-- 2.1
-- 2.2
-- 2.3
-- 2.4.0
-gemfile:
-- gemfile/mime_types_1.gemfile
-- gemfile/mime_types_2.gemfile
-- gemfile/mime_types_3.gemfile
+  - 2.1.10
+  - 2.2.10
+  - 2.3.8
+  - 2.4.4
+  - 2.5.3
+
+matrix:
+  include:
+    - rvm: 2.4
+      gemfile: gemfiles/mime_types_1.gemfile
+    - rvm: 2.4
+      gemfile: gemfiles/mime_types_2.gemfile
+    - rvm: 2.4
+      gemfile: gemfiles/mime_types_3.gemfile
+
 deploy:
   provider: rubygems
   api_key:

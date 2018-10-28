@@ -15,6 +15,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/maxlinc/swagger-rb'
   spec.license       = 'Apache-2.0'
 
+  spec.required_ruby_version = '>= 2.1'
+
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(/^bin\//) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(/^(test|spec|features)\//)
@@ -29,5 +31,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rubocop', '0.47.1'
   spec.add_development_dependency 'rake-notes'
-  spec.add_development_dependency 'inch'
 end
