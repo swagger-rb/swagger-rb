@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'addressable', '~> 2.3'
-  spec.add_dependency 'hashie', '~> 3.0', '< 3.4.0'
+  spec.add_dependency 'hashie', '>= 3.5.2'
   spec.add_dependency 'json-schema', '~> 2.2'
   spec.add_dependency 'mime-types'
   spec.add_development_dependency 'bundler'

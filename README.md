@@ -4,13 +4,6 @@ Swagger is a Ruby library for parsing, building, and traversing [Swagger](http:/
 
 [![Build Status](https://travis-ci.org/swagger-rb/swagger-rb.svg?branch=master)](https://travis-ci.org/swagger-rb/swagger-rb)
 
-## WARNING
-
-```diff
-- WARNING: Swagger is currently locked to an old verison of Hashie.
-- If you use this gem you may run into version compatiblity issues. Help is needed to resolve the issue (#19).
-```
-
 ## Installation
 
 *NOTE*: The gem is named `swagger-core`, because `swagger` was taken by an unrelated project.

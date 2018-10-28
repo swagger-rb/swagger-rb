@@ -3,6 +3,8 @@ module Swagger
   # @see https://github.com/wordnik/swagger-spec/blob/master/versions/2.0.md#schema-object- Schema Object
   # @see http://json-schema.org/ JSON Schema
   class Schema < Hashie::Mash
+    disable_warnings
+
     include Attachable
     include Hashie::Extensions::MergeInitializer
     include Hashie::Extensions::DeepFind
