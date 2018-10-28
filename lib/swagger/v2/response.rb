@@ -17,7 +17,7 @@ module Swagger
         code = parent.responses.key self
         code = '200' if code == 'default'
         code.to_i
-      rescue
+      rescue StandardError
         # TODO: Warning?
         200
       end

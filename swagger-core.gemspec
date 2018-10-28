@@ -1,4 +1,4 @@
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'swagger/version'
 
@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/maxlinc/swagger-rb'
   spec.license       = 'Apache-2.0'
 
-  spec.required_ruby_version = '>= 2.1'
+  spec.required_ruby_version = '>= 2.2'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(/^bin\//) { |f| File.basename(f) }
@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'mime-types'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'rubocop', '0.47.1'
   spec.add_development_dependency 'rake-notes'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rubocop', '0.60.0'
 end

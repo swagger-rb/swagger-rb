@@ -26,6 +26,7 @@ module Swagger
       count = 0
       until schema.refs_resolved?
         raise 'Could not resolve non-remote $refs 5 cycles - circular references?' if count >= 5
+
         schema.resolve_refs
         count += 1
       end
@@ -44,6 +45,7 @@ module Swagger
       items_and_props.each do |item|
         key = item.delete('$ref')
         next if remote_ref? key
+
         model = root.definitions[key]
         item.merge!(model)
       end

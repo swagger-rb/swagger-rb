@@ -6,4 +6,4 @@ require 'rake/notes/rake_task'
 RSpec::Core::RakeTask.new(:spec)
 RuboCop::RakeTask.new
 
-task default: [:spec, :rubocop, :notes]
+task default: %i[spec rubocop notes]

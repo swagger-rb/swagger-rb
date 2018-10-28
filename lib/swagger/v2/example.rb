@@ -20,6 +20,7 @@ module Swagger
       # @return [Object] an object according to the +media_type+
       def parse(media_type = 'application/json')
         return @raw unless @raw.is_a? String
+
         parser = Swagger::MimeType.parser_for(media_type)
         parser.parse(@raw)
       end

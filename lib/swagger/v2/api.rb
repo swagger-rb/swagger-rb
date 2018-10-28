@@ -60,6 +60,7 @@ module Swagger
         # NOTE: fully_validate is ideal, but very slow with the current schema/validator
         errors = JSON::Validator.fully_validate(swagger_schema, to_json)
         raise Swagger::InvalidDefinition, errors unless errors.empty?
+
         true
       end
 

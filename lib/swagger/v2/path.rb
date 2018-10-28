@@ -9,7 +9,7 @@ module Swagger
       extend Forwardable
       def_delegator :parent, :host
 
-      VERBS = [:get, :put, :post, :delete, :options, :head, :patch].freeze
+      VERBS = %i[get put post delete options head patch].freeze
       VERBS.each do |verb|
         field verb, Operation
       end
@@ -33,6 +33,7 @@ module Swagger
       # Iterates over each Path level parameter.
       def each_parameter
         return if parameters.nil?
+
         parameters.each do |parameter|
           yield parameter
         end

@@ -54,6 +54,7 @@ module Swagger
       # defined at the API level.
       def each_parameter
         return if parameters.nil?
+
         parameters.each do |parameter|
           yield parameter
         end

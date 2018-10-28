@@ -5,6 +5,7 @@ module Swagger
     # The top-level object in the hierarchy.
     def root
       return self if parent.nil?
+
       parent.root
     end
 
@@ -24,6 +25,7 @@ module Swagger
           end
         end
         next unless v.respond_to? :each
+
         v.each do |sv|
           sv.attach_parent self if sv.respond_to? :attach_parent
         end
