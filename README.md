@@ -2,6 +2,8 @@
 
 Swagger is a Ruby library for parsing, building, and traversing [Swagger](http://swagger.io/) API definitions.
 
+[![Build Status](https://travis-ci.org/swagger-rb/swagger-rb.svg?branch=master)](https://travis-ci.org/swagger-rb/swagger-rb)
+
 ## WARNING
 
 ```diff
@@ -119,3 +121,6 @@ api = builder.build
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+Run `git submodule update --init` locally to checkout the contents of [swagger_spec](swagger_spec).
+
