@@ -2,12 +2,7 @@
 
 Swagger is a Ruby library for parsing, building, and traversing [Swagger](http://swagger.io/) API definitions.
 
-## WARNING
-
-```diff
-- WARNING: Swagger is currently locked to an old verison of Hashie.
-- If you use this gem you may run into version compatiblity issues. Help is needed to resolve the issue (#19).
-```
+[![Build Status](https://travis-ci.org/swagger-rb/swagger-rb.svg?branch=master)](https://travis-ci.org/swagger-rb/swagger-rb)
 
 ## Installation
 
@@ -119,3 +114,6 @@ api = builder.build
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+Run `git submodule update --init` locally to checkout the contents of [swagger_spec](swagger_spec).
+

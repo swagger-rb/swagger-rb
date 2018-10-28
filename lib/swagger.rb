@@ -8,7 +8,7 @@ require 'swagger/boolean'
 # Provides loading and building capabilities for Swagger.
 # @see http://swagger.io Swagger
 module Swagger
-  RESOURCES_DIR = File.expand_path '../../resources/', __FILE__
+  RESOURCES_DIR = File.expand_path '../resources', __dir__
   class InvalidDefinition < StandardError
     def initialize(errors)
       @errors = errors

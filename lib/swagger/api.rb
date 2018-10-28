@@ -1,6 +1,10 @@
 module Swagger
   # A common interface for building or loading Swagger documents of any version. See subclasses.
   class API < SwaggerObject
+    class Converter < Hashie::Mash
+      disable_warnings
+    end
+
     def self.build_api(hash)
       version = hash['swaggerVersion'] || hash['swagger']
       major, _minor = version.to_s.split('.')
@@ -18,7 +22,7 @@ module Swagger
         @vendor_extensions[k] = v if k.to_s.start_with? 'x-'
       end
       # HACK: There's got to be a better way, but Dash wasn't working well with strings
-      super(Hashie::Mash.new(hash).to_hash(symbolize_keys: true))
+      super(Converter.new(hash).to_hash(symbolize_keys: true))
     end
   end
 end

@@ -9,6 +9,7 @@ module Swagger
     module ClassMethods
       def self.extend_object(dash)
         raise TypeError, 'Bash only works on Dash' unless dash <= Hashie::Dash
+
         dash.instance_variable_get('@required_properties').clear
         dash.coerce_value Hashie::Dash, Swagger::Bash, strict: false
       end
@@ -21,16 +22,17 @@ module Swagger
     # @api private
     def self.included(dash) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
       raise TypeError, 'Bash only works on Dash' unless dash <= Hashie::Dash
+
       dash.extend ClassMethods
       dash.instance_variable_get('@required_properties').clear
 
       # Very hacky... copy instance_variables for coercions
       base_dash = dash.superclass
-      [:@properties, :@defaults].each do |property|
+      %i[@properties @defaults].each do |property|
         dash.instance_variable_set(property, base_dash.instance_variable_get(property))
       end
 
-      [:@key_coercions, :@value_coercions].each do |property|
+      %i[@key_coercions @value_coercions].each do |property|
         coercions = base_dash.instance_variable_get(property)
         if coercions
           coercions.each_pair do |key, into|
