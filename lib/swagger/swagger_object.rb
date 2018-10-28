@@ -4,6 +4,7 @@ module Swagger
   class SwaggerObject < Hashie::Dash
     include Hashie::Extensions::Coercion
     include Hashie::Extensions::IndifferentAccess
+    include Hashie::Extensions::IgnoreUndeclared
     include Swagger::Attachable
 
     attr_accessor :parent
